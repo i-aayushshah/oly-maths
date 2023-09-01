@@ -1,0 +1,173 @@
+/* Add this CSS code to your style.css file */
+
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 85px;
+    padding-top: 250px;
+  
+  }
+  
+  /* Form */
+  .container .form {
+    width: 400px; /* Adjust the width as desired */
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+.container .form h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+.container .form p {
+    font-size: 14px;
+    margin-bottom: 30px;
+    color: #777;
+  }
+  
+  .container .form-group {
+    margin-bottom: 25px;
+    position: relative;
+  }
+  
+  .container  .form-control {
+    width: 100%;
+    max-width: 350px; /* Adjust the maximum width as desired */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    padding-left: 40px; /* Adjust the left padding as desired */
+  }
+  
+  .container  .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #888;
+  }
+  .container  .form-group :is(:focus, :valid){
+    border-width: 2px;
+    border-color: #4070f4;
+  }
+  .container  .form-group input:is(:focus, :valid) ~ .icon{
+    color: #4070f4;
+  }
+  .container  .form-group input:is(:focus, :valid) ~ i{
+    color: #4070f4;
+  }
+  .container .uil-user{
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Adjust the left position as desired */
+    transform: translateY(-50%);
+    color: #888;
+  }
+  
+  .container .uil-calendar-alt{
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Adjust the left position as desired */
+    transform: translateY(-50%);
+    color: #888;
+  }
+  
+  
+  .container .showHidePw {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+  }
+  
+  .container  .showHidePw1{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+  }
+  
+  .container .link {
+    font-size: 14px;
+    margin-top: 15px;
+  }
+  
+  .container .link a {
+    color: #4070f4;
+   
+  }
+  
+  .container .button {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color:#4070f4;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .container .alert-danger {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    background-color: rgba(255, 0, 0, 0.2); /* Transparent red background */
+    color: #8B0000; /* Dark red text */
+  }
+  .container .alert-success {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    background-color: rgba(0, 128, 0, 0.2); /* Transparent green background */
+    color: #006400; /* Dark green text */
+  }
+  
+ .container  .text-center {
+    text-align: center;
+    color: black;
+  }
+  .container  .text-left {
+    text-align: left;
+  }
+  
+  .container  .text-right {
+    text-align: right;
+  }
+  
+  /* Update the existing .title styles */
+  
+  /* Update the existing CSS */
+  
+  .container  .form-header {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .container  .form-header p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: #000; /* Add this line to set the text color to black */
+  }
+  .container  .login-line {
+    display: block;
+    width: 50px; /* Adjust the width as desired */
+    height: 3px; /* Adjust the height as desired */
+    background-color: blue; /* Change the color as desired */
+    margin-top: 5px; /* Adjust the margin as desired */
+  }
+  

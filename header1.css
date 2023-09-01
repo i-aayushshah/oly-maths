@@ -1,0 +1,186 @@
+.quoraBox {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid lightgray;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .quoraBox:hover {
+    border: 1px solid rgb(175, 175, 175);
+  }
+  
+  .quoraBox__info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quoraBox__info > h5 {
+    color: rgb(129, 129, 129);
+    font-weight: 300;
+    margin-left: 10px;
+  }
+  
+  .quoraBox__quora {
+    display: flex;
+    margin-top: 8px;
+  }
+  
+  .quoraBox__quora > p {
+    color: gray;
+    font-weight: bold;
+    font-size: large;
+  }
+  .dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .dialog__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    z-index: 9999;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  textarea {
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .fileInputContainer {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .fileInputContainer span {
+    display: block;
+    margin-top: 60px;
+    color: #999;
+  }
+  
+  input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .imagePreview {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .imagePreview img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 5px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4}
+
+    /* Existing CSS code */
+
+.closeButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.imageContainer {
+  position: relative;
+  display: inline-block;
+  margin: 5px;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+
+.quoraBox__infoAvatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+
+}
+
+textarea {
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
+}
