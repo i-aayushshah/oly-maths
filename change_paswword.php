@@ -80,7 +80,7 @@ if($email != false && $password != false){
     <section>
     <div class="container">
     <h2>Change Password</h2>
-    <form>
+    <form action="edit_password.php" method="POST" autocomplete="off">
       <div class="form-group">
         <label for="current-password">Current Password</label>
         <input type="password" class="form-control password" name="current-password" required>
@@ -100,7 +100,7 @@ if($email != false && $password != false){
 
       </div>
       <div class="form-group">
-        <input type="submit" value="Change Password">
+        <input type="submit" name="changes" value="Change Password">
       </div>
     </form>
   </div>
