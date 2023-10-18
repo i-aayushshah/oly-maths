@@ -1,5 +1,5 @@
 <?php require_once "../controllerUserData.php"; ?>
-<?php 
+<?php
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
 if($email != false && $password != false){
@@ -36,7 +36,7 @@ if($email != false && $password != false){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <style>
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-  
+
    .navbar .btn {
   background-color: #4CAF50;
   border: none;
@@ -102,6 +102,7 @@ body {
 
     .result {
       margin-top: 20px;
+      font-weight: bold;
       text-align: center;
       overflow-wrap: break-word;
       word-wrap: break-word;
@@ -119,17 +120,17 @@ body {
       border-radius: 3px;
       cursor: pointer;
     }
- 
+
     </style>
-    
+
   </head>
   <body>
     <nav class="sidebar">
-      
-      <a href="#" class="logo"><img src="../images/logo.png" alt="">Oly Maths</a>
-      
 
-     
+      <a href="/WebProject/home.php" class="logo"><img src="../images/logo.png" alt="">Oly Maths</a>
+
+
+
       <div class="menu-content">
         <ul class="menu-items">
           <div class="menu-title">Contents</div>
@@ -258,7 +259,7 @@ body {
               </ul>
           </li>
 
-            
+
           <li class="item">
             <div class="submenu-item">
               <span> Arithmetic Functions </span>
@@ -314,7 +315,7 @@ body {
               </li>
               </ul>
           </li>
-          
+
               <li class="item">
             <div class="submenu-item">
               <span>Fun  </span>
@@ -353,7 +354,7 @@ body {
     <nav class="navbar">
       <i class="fa-solid fa-bars" id="sidebar-close"></i>
       <div class="navbar-items">
-      <h6>Welcome <?php echo $fetch_info['name'] ?></h6>
+      <h6>Welcome <?php echo $fetch_info['fname'] ?></h6>
         <a href="#" class="logo"><img src="../images/logo.png" alt="">Oly Maths</a>
         <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
         <a href="#"></a><ion-icon name="logo-facebook"></ion-icon></a>
@@ -361,71 +362,70 @@ body {
         <a href="#"></a><ion-icon name="logo-linkedin"></ion-icon></a>
         <button type="button" class="btn btn-light"><a href="../logout-user.php">Logout</a></button>
       </div>
-      
+
     </nav>
 
     <main class="main">
     <section>
-    
-    <div class="container">
-    <h1>Extended Euclidean Algorithm</h1>
-    <h4>The extended Euclidean algorithm returns two integers x and y, such that for two integer inputs, A and B,
-        Ax + By = gcd(A, B).</h4>
-    <div>
-      <label for="numbers">Enter two positive integers separated by commas:</label>
-      <input type="text" id="numbers" onkeydown="handleEnterKey(event)">
-    </div>
-    <div>
-      <button onclick="calculateExtendedEuclidean()">Calculate</button>
-      <button class="btn-clear" onclick="clearValues()">Clear</button>
-    </div>
-    <div class="result" id="result"></div>
-  </div>
 
-  <script>
-    function calculateExtendedEuclidean() {
-      var numbersInput = document.getElementById("numbers");
-      var resultOutput = document.getElementById("result");
+<div class="container">
+<h1>Extended Euclidean Algorithm</h1>
+<h4>The extended Euclidean algorithm returns two integers x and y, such that for two integer inputs, A and B,
+    Ax + By = gcd(A, B).</h4>
+<div>
+  <label for="numbers">Enter two positive integers separated by commas:</label>
+  <input type="text" id="numbers" onkeydown="handleEnterKey(event)">
+</div>
+<div>
+  <button onclick="calculateExtendedEuclidean()">Calculate</button>
+  <button class="btn-clear" onclick="clearValues()">Clear</button>
+</div>
+<div class="result" id="result"></div>
+</div>
 
-      var inputValues = numbersInput.value.split(",");
-      var a = parseInt(inputValues[0]);
-      var b = parseInt(inputValues[1]);
+<script>
+function calculateExtendedEuclidean() {
+  var numbersInput = document.getElementById("numbers");
+  var resultOutput = document.getElementById("result");
 
-      if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
-        resultOutput.textContent = "Please enter valid positive integers.";
-        return;
-      }
+  var inputValues = numbersInput.value.split(",");
+  var a = parseInt(inputValues[0]);
+  var b = parseInt(inputValues[1]);
 
-      var result = extendedEuclidean(a, b);
+  if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+    resultOutput.textContent = "Please enter valid positive integers.";
+    return;
+  }
 
-      resultOutput.textContent = "The extended Euclidean algorithm results for A = " + a + " and B = " + b + " are:\n\nx = " + result.x + ", y = " + result.y + ", gcd(A, B) = " + result.gcd;
-    }
+  var result = extendedEuclidean(a, b);
 
-    function extendedEuclidean(a, b) {
-      if (b === 0) {
-        return { x: 1, y: 0, gcd: a };
-      } else {
-        var result = extendedEuclidean(b, a % b);
-        var temp = result.x;
-        result.x = result.y;
-        result.y = temp - Math.floor(a / b) * result.y;
-        return result;
-      }
-    }
+  resultOutput.textContent = "The extended Euclidean algorithm results for A = " + a + " and B = " + b + " are:\n\nx = " + result.x + ", y = " + result.y + ", gcd(A, B) = " + result.gcd;
+}
 
-    function clearValues() {
-      document.getElementById("numbers").value = "";
-      document.getElementById("result").textContent = "";
-    }
+function extendedEuclidean(a, b) {
+  if (b === 0) {
+    return { x: 1, y: 0, gcd: a };
+  } else {
+    var result = extendedEuclidean(b, a % b);
+    var temp = result.x;
+    result.x = result.y;
+    result.y = temp - Math.floor(a / b) * result.y;
+    return result;
+  }
+}
 
-    function handleEnterKey(event) {
-      if (event.keyCode === 13) {
-        calculateExtendedEuclidean();
-      }
-    }
+function clearValues() {
+  document.getElementById("numbers").value = "";
+  document.getElementById("result").textContent = "";
+}
+
+function handleEnterKey(event) {
+  if (event.keyCode === 13) {
+    calculateExtendedEuclidean();
+  }
+}
 </section>
-    
-    
+
       <div class="navigation">
         <ul>
           <li class="list">
@@ -476,22 +476,22 @@ body {
           <div class="indicator"></div>
         </ul>
       </div>
-      
+
       <script>
         // Get the current page URL
         var currentPageUrl = window.location.href;
-      
+
         // Get all the navigation list items
         var navigationItems = document.querySelectorAll('.navigation .list');
-      
+
         // Loop through each navigation item
         navigationItems.forEach(function(item) {
           // Get the anchor tag within the list item
           var anchor = item.querySelector('a');
-      
+
           // Get the href value of the anchor tag
           var href = anchor.getAttribute('href');
-      
+
           // Check if the href matches the current page URL
           if (currentPageUrl.includes(href)) {
             // Add the "active" class to the list item
@@ -514,7 +514,7 @@ var signInMenuItem = document.querySelector('.navigation .list:nth-child(1)');
 signInMenuItem.classList.add('active');
 
             </script>
-      
+
       <script src="main.js"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

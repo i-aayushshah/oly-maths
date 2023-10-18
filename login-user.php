@@ -21,7 +21,7 @@
           <a href="#"></a><ion-icon name="logo-twitter"></ion-icon></a>
           <a href="#"></a><ion-icon name="logo-linkedin"></ion-icon></a>
         </div>
-        
+
       </nav>
 
 
@@ -49,12 +49,12 @@
                     }
                     ?>
                     <div class="form-group">
-                        
+
                         <input class="form-control form-control-with-icon" type="email" name="email" placeholder="Email Address" required value="<?php echo $email ?>">
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="form-group">
-                    
+
   <input class="form-control form-control-with-icon password" type="password" name="password" placeholder="Password" required>
   <i class="uil uil-lock icon"></i>
   <i class="uil uil-eye-slash showHidePw"></i>
@@ -89,71 +89,71 @@
 
 
 <div class="navigation">
-            <ul>
-              <li class="list">
-                <a href="/WebProject/home.php">
-                  <span class="icon">
-                    <ion-icon name="home-outline"></ion-icon>
-                  </span> 
-                  <span class="text">Home</span>
-                  <span class="circle"></span>
-                </a>
-              </li>
-              <li class="list">
-                <a href="/WebProject/profile.php">
-                  <span class="icon">
-                    <ion-icon name="person-outline"></ion-icon>
-                  </span>
-                  <span class="text">Profile</span>
-                  <span class="circle"></span>
-                </a>
-              </li>
-              <li class="list">
-                <a href="#">
-                  <span class="icon">
-                    <ion-icon name="people"></ion-icon>
-                  </span>
-                  <span class="text">About Us</span>
-                  <span class="circle"></span>
-                </a>
-              </li>
-              <li class="list active">
-                <a href="/WebProject/login-user.php">
-                  <span class="icon">
-                    <ion-icon name="person-add"></ion-icon>
-                  </span>
-                  <span class="text">Sign in</span>
-                  <span class="circle"></span>
-                </a>
-              </li>
-              <li class="list">
-                <a href="/WebProject/contact.php">
-                  <span class="icon">
-                    <ion-icon name="call"></ion-icon>
-                  </span>
-                  <span class="text">Contact Us</span>
-                  <span class="circle"></span>
-                </a>
-              </li>
-              <div class="indicator"></div>
-            </ul>
-          </div>
-          
+        <ul>
+          <li class="list">
+            <a href="/WebProject/home.php">
+              <span class="icon">
+                <ion-icon name="home-outline"></ion-icon>
+              </span>
+              <span class="text">Home</span>
+              <span class="circle"></span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="discussion.php">
+              <span class="icon">
+                <ion-icon name="chatbox-outline"></ion-icon>
+              </span>
+              <span class="text">Discussioin</span>
+              <span class="circle"></span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="/WebProject/about.php">
+              <span class="icon">
+                <ion-icon name="person-outline"></ion-icon>
+              </span>
+              <span class="text">Profile</span>
+              <span class="circle"></span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="/WebProject/login-user.php">
+              <span class="icon">
+                <ion-icon name="person-add"></ion-icon>
+              </span>
+              <span class="text">Sign in</span>
+              <span class="circle"></span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="/WebProject/contact.php">
+              <span class="icon">
+                <ion-icon name="call"></ion-icon>
+              </span>
+              <span class="text">Contact Us</span>
+              <span class="circle"></span>
+            </a>
+          </li>
+          <div class="indicator"></div>
+        </ul>
+      </div>
+
           <script>
             // Get the current page URL
             var currentPageUrl = window.location.href;
-          
+
             // Get all the navigation list items
             var navigationItems = document.querySelectorAll('.navigation .list');
-          
+
             // Loop through each navigation item
             navigationItems.forEach(function(item) {
               // Get the anchor tag within the list item
               var anchor = item.querySelector('a');
-          
+
               // Get the href value of the anchor tag
               var href = anchor.getAttribute('href');
-          
+
               // Check if the href matches the current page URL
               if (currentPageUrl.includes(href)) {
                 // Add the "active" class to the list item
@@ -189,14 +189,14 @@ navigationItems.forEach(function (item) {
 
 
             </script>
-          
+
           <script src="main.js"></script>
 
       <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
       <script src="script_1.js"></script>
       </main>
-  
+
       <script src="script.js"></script>
 
 

@@ -74,7 +74,7 @@ if (isset($_GET['success'])) {
   <nav class="navbar">
         <i class="" id="sidebar-close"></i>
         <div class="navbar-items">
-      <h6>Welcome <?php echo $fetch_info['name'] ?></h6>
+        <h6>Welcome <?php echo $fetch_info['fname']?></h6>
         <a href="#" class="logo"><img src="images/logo.png" alt="">Oly Maths</a>
         <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
         <a href="#"></a><ion-icon name="logo-facebook"></ion-icon></a>
@@ -130,20 +130,20 @@ if (isset($_GET['success'])) {
             </a>
           </li>
           <li class="list">
-            <a href="profile.php">
+            <a href="discussion.php">
               <span class="icon">
-                <ion-icon name="person-outline"></ion-icon>
+                <ion-icon name="chatbox-outline"></ion-icon>
               </span>
-              <span class="text">Profile</span>
+              <span class="text">Discussioin</span>
               <span class="circle"></span>
             </a>
           </li>
           <li class="list">
-            <a href="about.php">
+            <a href="/WebProject/about.php">
               <span class="icon">
-                <ion-icon name="people"></ion-icon>
+                <ion-icon name="person-outline"></ion-icon>
               </span>
-              <span class="text">About Us</span>
+              <span class="text">Profile</span>
               <span class="circle"></span>
             </a>
           </li>

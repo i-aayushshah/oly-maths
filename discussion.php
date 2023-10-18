@@ -1,4 +1,4 @@
-<?php require_once "../controllerUserData.php"; ?>
+<?php require_once "controllerUserData.php"; ?>
 <?php
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
@@ -14,11 +14,11 @@ if($email != false && $password != false){
                 header('Location: reset-code.php');
             }
         }else{
-            header('Location: ../user-otp.php');
+            header('Location: user-otp.php');
         }
     }
 }else{
-    header('Location: ../login-user.php');
+    header('Location: login-user.php');
 }
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,8 @@ if($email != false && $password != false){
     <title>Oly Maths</title>
     <link rel="stylesheet" href="/WebProject/style.css" />
     <link rel="stylesheet" href="/WebProject/qa.css" />
-    <link rel="stylesheet" href="/WebProject/header.css" />
+    <link rel="stylesheet" href="/WebProject/header_1.css" />
+    <link rel="stylesheet" href="/WebProject/feed_1.css" />
     <script src="/WebProject/header.js"></script>
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
@@ -56,82 +57,7 @@ if($email != false && $password != false){
   background-color: #45a049;
 }
 
-body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
 
-    h1 {
-      color: #333;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 450px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-
-    input[type="text"] {
-      width: 95%;
-      padding: 8px;
-      font-size: 16px;
-      border-radius: 3px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      font-size: 16px;
-      background-color: #4caf50;
-      color: #fff;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-
-    .result {
-      margin-top: 20px;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      hyphens: auto;
-      max-width: 100%;
-    }
-
-    .btn-clear {
-      background-color: #ff6f6f;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th,
-    td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    th {
-      font-weight: bold;
-    }
-
-    .error-message {
-      color: red;
-      margin-top: 10px;
-    }
 
     </style>
 
@@ -139,7 +65,7 @@ body {
   <body>
     <nav class="sidebar">
 
-      <a href="/WebProject/home.php" class="logo"><img src="../images/logo.png" alt="">Oly Maths</a>
+      <a href="/WebProject/home.php" class="logo"><img src="images/logo.png" alt="">Oly Maths</a>
 
 
 
@@ -340,7 +266,7 @@ body {
                 Sub Contents
               </div>
               <li class="item">
-                <a href="/WebProject/Fun/Kaprekar_sConstant.php">Kaprekar's Constant </a>
+                <a href="/WebProject/Fun/Kaprekar'sConstant.php">Kaprekar's Constant </a>
               </li>
 
               <li class="item">
@@ -348,7 +274,7 @@ body {
               </li>
 
               <li class="item">
-                <a href="/WebProject/Fun/Pascal_sTriangle.php">Pascal's Triangle  </a>
+                <a href="/WebProject/Fun/Pascal'sTriangle.php">Pascal's Triangle  </a>
               </li>
 
               <li class="item">
@@ -367,12 +293,12 @@ body {
       <i class="fa-solid fa-bars" id="sidebar-close"></i>
       <div class="navbar-items">
       <h6>Welcome <?php echo $fetch_info['fname'] ?></h6>
-        <a href="/WebProject/home.php" class="logo"><img src="../images/logo.png" alt="">Oly Maths</a>
+        <a href="/WebProject/home.php" class="logo"><img src="images/logo.png" alt="">Oly Maths</a>
         <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
         <a href="#"></a><ion-icon name="logo-facebook"></ion-icon></a>
         <a href="#"></a><ion-icon name="logo-twitter"></ion-icon></a>
         <a href="#"></a><ion-icon name="logo-linkedin"></ion-icon></a>
-        <button type="button" class="btn btn-light"><a href="../logout-user.php">Logout</a></button>
+        <button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button>
       </div>
 
     </nav>
@@ -380,127 +306,295 @@ body {
     <main class="main">
     <section>
     <div class="container">
-    <h1>Euler's Criterion / Legendre Symbol Calculator</h1>
-    <h4>Euler's Criterion helps determine if an integer (a) is a quadratic residue modulo an odd prime (p) or not. This is done by calculating the value of the Legendre symbol (a/p).</h4>
-    <p>A value of 1 indicates that a is a quadratic residue modulo p.</p>
-    <p>A value of -1 indicates that a is a non-quadratic residue modulo p.</p>
-    <p>A value of 0 indicates that a ≡ 0 (mod p).</p>
-    <p>Note: a should not be a multiple of p, otherwise a value of 0 is returned.</p>
-    <div>
-      <label for="numerator">Enter the numerator (a):</label>
-      <input type="text" id="numerator" onkeydown="handleEnterKey(event)">
+    <div class="quoraBox">
+    <div class="quoraBox__info">
+    <?php
+  if ($fetch_info['profile'] != null) {
+    echo '<img src="' . $fetch_info['profile'] . '" alt="Profile Picture" class="userAvatar">';
+  } else {
+    echo '<img src="60111.jpg" alt="Dummy Picture" class="userAvatar">';
+  }
+  ?>      <h4><?php echo $fetch_info['fname'] ?> <?php echo $fetch_info['lname'] ?></h4>
     </div>
-    <div>
-      <label for="denominator">Enter the denominator (p):</label>
-      <input type="text" id="denominator" onkeydown="handleEnterKey(event)">
+    <div class="quoraBox__quora" onclick="openDialog()">
+      <p>What is your question or link?</p>
     </div>
-    <div>
-      <button onclick="calculateLegendreSymbol()">Calculate</button>
-      <button class="btn-clear" onclick="clearValues()">Clear</button>
+  </div>
+</div>
+  <div id="dialog" class="dialog">
+    <div class="dialog__content">
+      <span class="close" onclick="closeDialog()">&times;</span>
+      <h3>Post your question</h3>
+      <div class="userProfile">
+
+      <?php
+  if ($fetch_info['profile'] != null) {
+    echo '<img src="' . $fetch_info['profile'] . '" alt="Profile Picture" class="userAvatar">';
+  } else {
+    echo '<img src="60111.jpg" alt="Dummy Picture" class="userAvatar">';
+  }
+  ?>
+        <h5><?php echo $fetch_info['fname'] ?> <?php echo $fetch_info['lname'] ?></h5>
+
+      </div>
+      <form action="submit_question.php" method="POST" enctype="multipart/form-data">
+        <textarea name="question" placeholder="Enter your question or link" required></textarea>
+        <label for="fileInput" class="fileInputContainer">
+          <span>Choose files</span>
+          <input type="file" name="image" id="fileInput" accept="image/*" style="display: none;" onchange="addFiles(event)" />
+        </label>
+        <div id="imagePreview" class="imagePreview"></div>
+
+        <button type="submit" name="post">Post</button>
+      </form>
     </div>
-    <div class="result" id="result"></div>
-    <div class="error-message" id="error-message"></div>
   </div>
 
-  <script>
-    function calculateLegendreSymbol() {
-      var numeratorInput = document.getElementById("numerator");
-      var denominatorInput = document.getElementById("denominator");
-      var resultOutput = document.getElementById("result");
-      var errorMessage = document.getElementById("error-message");
+</section>
 
-      var numerator = parseInt(numeratorInput.value);
-      var denominator = parseInt(denominatorInput.value);
 
-      if (isNaN(numerator) || isNaN(denominator)) {
-        errorMessage.textContent = "Please enter valid integer values for the numerator and denominator.";
-        resultOutput.textContent = "";
-        return;
-      }
+<section>
 
-      if (denominator === 0) {
-        errorMessage.textContent = "Denominator cannot be zero.";
-        resultOutput.textContent = "";
-        return;
-      }
+<div class="feed">
+    <?php
+    // Connect to your database
+    $conn = mysqli_connect('localhost', 'root', '', 'userform');
 
-      if (denominator % 2 === 0) {
-        errorMessage.textContent = "Denominator should be an odd number.";
-        resultOutput.textContent = "";
-        return;
-      }
-
-      var legendreSymbol = calculateLegendreSymbolValue(numerator, denominator);
-      displayLegendreSymbol(legendreSymbol, numerator, denominator);
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
     }
 
-    function calculateLegendreSymbolValue(a, p) {
-      if (a % p === 0) {
-        return 0;
-      }
+    // Prepare the statement
+    $stmt = mysqli_prepare($conn, "SELECT * FROM questions");
 
-      var legendreSymbol = 1;
+    // Execute the statement
+    mysqli_stmt_execute($stmt);
 
-      if (a < 0) {
-        a = a % p + p;
-      }
+    // Get the result
+    $result = mysqli_stmt_get_result($stmt);
+    $index = 0;
 
-      var power = (p - 1) / 2;
-      var result = modularExponentiation(a, power, p);
+    // Loop through the posts and display them
+    while ($row = mysqli_fetch_assoc($result)) {
+        $FirstName = $row['fname'];
+        $lastName = $row['lname'];
+        $postDate = $row['timestamp'];
+        $postContent = $row['question'];
+        $postImage = $row['image'];
+        $profile = $row['profile'];
+        $qid = $row["id"];
+        ?>
 
-      if (result === p - 1) {
-        legendreSymbol = -1;
-      }
+        <div class="post">
+            <div class="post-header">
+                <img src="<?php echo $profile; ?>" alt="User Profile Photo" class="user-profile-photo">
+                <div class="post-info">
+                    <p class="user-name"><?php echo $FirstName; ?> <?php echo $lastName; ?> <span class="user-action">posted a question</span></p>
+                    <p class="post-date"><?php echo $postDate; ?></p>
+                </div>
+            </div>
+            <p class="post-content"><?php echo $postContent; ?></p>
 
-      return legendreSymbol;
-    }
+            <?php if (!empty($postImage)) { ?>
+                <img src="<?php echo $postImage; ?>" alt="Post Image" class="post-image">
+            <?php } ?>
 
-    function modularExponentiation(base, exponent, modulus) {
-      if (modulus === 1) {
-        return 0;
-      }
+            <div class="button-bar">
+                <button class="clap-btn">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <span>Thanks</span>
+                </button>
+                <button class="answer-thread-btn">
+                    <i class="fa-sharp fa-regular fa-pen-to-square"></i>
+                    <span>Answer Thread</span>
+                </button>
+            </div>
 
-      var result = 1;
-      base = base % modulus;
-
-      while (exponent > 0) {
-        if (exponent % 2 === 1) {
-          result = (result * base) % modulus;
+            <div class="answer-section" style="display: none;">
+    <div class="user-profile-container">
+        <?php
+        if ($fetch_info['profile'] != null) {
+            echo '<img src="' . $fetch_info['profile'] . '" alt="Profile Picture" class="user-profile-photo">';
+        } else {
+            echo '<img src="60111.jpg" alt="Dummy Picture" class="user-profile-photo">';
         }
+        ?>
+        <div class="answer-input-container">
+            <form action="submit_answer.php" method="POST" enctype="multipart/form-data">
+                <textarea placeholder="Add an answer" class="answer-input" name="answer"></textarea>
+                <div class="preview-container" style="display: none;">
+                    <img class="preview-image" alt="Image Preview" id="preview-image-<?php echo $qid; ?>">
+                    <button class="cross-button" style="display: none;">&times;</button>
+                </div>
+                <label for="file-upload-<?php echo $qid; ?>" class="file-upload-label">
+                    <img src="123.jpg" alt="Gallery Icon" class="gallery-icon">
+                </label>
+                <input id="file-upload-<?php echo $qid; ?>" type="file" accept="image/*" class="file-upload-input" name="image" onchange="previewImage(event, <?php echo $qid; ?>)">
+                <input type="hidden" name="question_id" value="<?php echo $qid; ?>">
+                <!-- Hidden input to store the question ID -->
+                <button type="submit" class="answer-btn" name="answers">Answer</button>
+            </form>
+        </div>
+    </div>
 
-        exponent = Math.floor(exponent / 2);
-        base = (base * base) % modulus;
-      }
 
-      return result;
+
+    <ul class="answers-list">
+                    <?php
+
+                    $answerStmt = mysqli_prepare($conn, "SELECT * FROM answers WHERE aid = ?");
+
+                    mysqli_stmt_bind_param($answerStmt, "i", $qid);
+
+                    // Execute the statement
+                    mysqli_stmt_execute($answerStmt);
+
+                    // Get the result
+                    $answerResult = mysqli_stmt_get_result($answerStmt);
+
+                    // Loop through the answers and display them
+                    while ($answerRow = mysqli_fetch_assoc($answerResult)) {
+                        $answerAuthor = $answerRow['fname'];
+                        $answerAuthorl = $answerRow['lname'];
+                        $answerDate = $answerRow['timestamp'];
+                        $answerContent = $answerRow['answer'];
+                        $answerImage = $answerRow['image'];
+                        ?>
+
+                        <div class="answer-item" id="answeritem">
+                            <div class="user-header">
+                                <img src="<?php echo $profile; ?>" alt="User Profile Photo" class="user-profile-photo" />
+                                <p class="user-name"><?php echo $answerAuthor; ?><?php echo $answerAuthorl; ?></p>
+                                <span> </span>
+                                <p class="answered-date"><?php echo $answerDate; ?></p>
+                            </div>
+                            <div class="answer-content">
+                                <p class="answer-text"><?php echo $answerContent; ?></p>
+                                <?php if (!empty($answerImage)) { ?>
+                                    <img src="<?php echo $answerImage; ?>" alt="Answer Image" class="answer-image" />
+                                <?php } ?>
+                            </div>
+                            <div class="happy-container">
+                                <button class="clap-btn">
+                                    <i class="fa-sharp fa-regular fa-face-smile"></i> Happy
+                                </button>
+                                <span class="happy-count">0</span>
+                            </div>
+                        </div>
+
+                        <?php
+                    }
+
+                    // Close the answer statement
+                    mysqli_stmt_close($answerStmt);
+                    ?>
+                </ul>
+            </div>
+        </div>
+
+        <?php
+        $index++; // Increment the index variable
     }
 
-    function displayLegendreSymbol(legendreSymbol, numerator, denominator) {
-      var resultOutput = document.getElementById("result");
-      var errorMessage = document.getElementById("error-message");
-      errorMessage.textContent = "";
+    // Close the statement
+    mysqli_stmt_close($stmt);
 
-      resultOutput.innerHTML = "";
-      resultOutput.appendChild(document.createTextNode("Numerator (a): " + numerator));
-      resultOutput.appendChild(document.createElement("br"));
-      resultOutput.appendChild(document.createTextNode("Denominator (p): " + denominator));
-      resultOutput.appendChild(document.createElement("br"));
-      resultOutput.appendChild(document.createTextNode("Legendre Symbol: " + legendreSymbol));
+    // Close the database connection
+    mysqli_close($conn);
+    ?>
+</div>
+<script>
+    function previewImage(event, qid) {
+    var input = event.target;
+    var previewContainer = input.parentNode.querySelector('.preview-container');
+    var previewImage = previewContainer.querySelector('#preview-image-' + qid);
+    var crossButton = previewContainer.querySelector('.cross-button');
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            previewImage.src = e.target.result;
+            previewContainer.style.display = 'block';
+            crossButton.style.display = 'block';
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        previewImage.src = '';
+        previewContainer.style.display = 'none';
+        crossButton.style.display = 'none';
     }
 
-    function clearValues() {
-      document.getElementById("numerator").value = "";
-      document.getElementById("denominator").value = "";
-      document.getElementById("result").textContent = "";
-      document.getElementById("error-message").textContent = "";
-    }
+    crossButton.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent form submission
 
-    function handleEnterKey(event) {
-      if (event.keyCode === 13) {
-        calculateLegendreSymbol();
-      }
-    }
-  </script>
+        // Code to remove the preview image or perform any other desired action
+        previewImage.src = '';
+        previewContainer.style.display = 'none';
+        crossButton.style.display = 'none';
+    });
+}
+
+</script>
+
+<script>
+   // JavaScript code to handle file upload and image preview
+
+// Get all file input elements
+const fileInputs = document.querySelectorAll('.file-upload-input');
+
+// Loop through each file input element
+fileInputs.forEach(function(fileInput) {
+    const previewContainer = fileInput.parentNode.nextElementSibling;
+    const previewImage = previewContainer.querySelector('.preview-image');
+    const crossButton = previewContainer.querySelector('.cross-button');
+
+    // Handle file input change event
+    fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+
+        // Display the image preview
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                previewImage.src = reader.result;
+            };
+
+            reader.readAsDataURL(file);
+            previewContainer.style.display = 'block';
+            crossButton.style.display = 'block';
+        }
+    });
+
+    // Handle cross button click event to remove the preview
+    crossButton.addEventListener('click', function() {
+        previewImage.src = '';
+        fileInput.value = '';
+        previewContainer.style.display = 'none';
+        crossButton.style.display = 'none';
+    });
+});
+
+</script>
+
+
+<script>
+    // JavaScript code to handle the toggle behavior
+    const answerSections = document.querySelectorAll('.answer-section');
+
+    answerSections.forEach((answerSection) => {
+        const answerThreadBtn = answerSection.previousElementSibling.querySelector('.answer-thread-btn');
+
+        answerThreadBtn.addEventListener('click', () => {
+            answerSection.style.display = (answerSection.style.display === 'none') ? 'block' : 'none';
+        });
+    });
+</script>
+<script src="post.js"></script>
+
 
 </section>
 
@@ -508,7 +602,7 @@ body {
 <div class="navigation">
         <ul>
           <li class="list">
-            <a href="../home.php">
+            <a href="/WebProject/home.php">
               <span class="icon">
                 <ion-icon name="home-outline"></ion-icon>
               </span>
@@ -517,7 +611,7 @@ body {
             </a>
           </li>
           <li class="list">
-            <a href="../discussion.php">
+            <a href="discussion.php">
               <span class="icon">
                 <ion-icon name="chatbox-outline"></ion-icon>
               </span>
@@ -526,7 +620,7 @@ body {
             </a>
           </li>
           <li class="list">
-            <a href="../about.php">
+            <a href="/WebProject/about.php">
               <span class="icon">
                 <ion-icon name="person-outline"></ion-icon>
               </span>
@@ -535,7 +629,7 @@ body {
             </a>
           </li>
           <li class="list">
-            <a href="../login-user.php">
+            <a href="/WebProject/login-user.php">
               <span class="icon">
                 <ion-icon name="person-add"></ion-icon>
               </span>
@@ -544,7 +638,7 @@ body {
             </a>
           </li>
           <li class="list">
-            <a href="../contact.php">
+            <a href="/WebProject/contact.php">
               <span class="icon">
                 <ion-icon name="call"></ion-icon>
               </span>
@@ -555,6 +649,7 @@ body {
           <div class="indicator"></div>
         </ul>
       </div>
+
       <script>
         // Get the current page URL
         var currentPageUrl = window.location.href;
@@ -588,7 +683,7 @@ navigationItems.forEach(function (item) {
 });
 
 // Find the "Sign in" menu item and add the "active" class
-var signInMenuItem = document.querySelector('.navigation .list:nth-child(1)');
+var signInMenuItem = document.querySelector('.navigation .list:nth-child(2)');
 signInMenuItem.classList.add('active');
 
             </script>

@@ -1,26 +1,4 @@
-<?php require_once "controllerUserData.php"; ?>
-<?php 
-$email = $_SESSION['email'];
-$password = $_SESSION['password'];
-if($email != false && $password != false){
-    $sql = "SELECT * FROM usertable WHERE email = '$email'";
-    $run_Sql = mysqli_query($con, $sql);
-    if($run_Sql){
-        $fetch_info = mysqli_fetch_assoc($run_Sql);
-        $status = $fetch_info['status'];
-        $code = $fetch_info['code'];
-        if($status == "verified"){
-            if($code != 0){
-                header('Location: reset-code.php');
-            }
-        }else{
-            header('Location: user-otp.php');
-        }
-    }
-}else{
-    header('Location: login-user.php');
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,16 +6,19 @@ if($email != false && $password != false){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oly Maths</title>
-    <link rel="stylesheet" href="/WebProject/style.css" />
+    <link rel="stylesheet" href="/WebProject/about_style.css" />
     <link rel="stylesheet" href="/WebProject/qa.css" />
     <link rel="stylesheet" href="/WebProject/header_1.css" />
     <link rel="stylesheet" href="/WebProject/feed_1.css" />
+    <link rel="stylesheet" href="/WebProject/about.css" />
+
+
     <script src="/WebProject/header.js"></script>
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <style>
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-  
+
    .navbar .btn {
   background-color: #4CAF50;
   border: none;
@@ -58,17 +39,17 @@ if($email != false && $password != false){
 }
 
 
- 
+
     </style>
-    
+
   </head>
   <body>
     <nav class="sidebar">
-      
-      <a href="#" class="logo"><img src="images/logo.png" alt="">Oly Maths</a>
-      
 
-     
+      <a href="/WebProject/home.php" class="logo"><img src="images/logo.png" alt="">Oly Maths</a>
+
+
+
       <div class="menu-content">
         <ul class="menu-items">
           <div class="menu-title">Contents</div>
@@ -197,7 +178,7 @@ if($email != false && $password != false){
               </ul>
           </li>
 
-            
+
           <li class="item">
             <div class="submenu-item">
               <span> Arithmetic Functions </span>
@@ -253,7 +234,7 @@ if($email != false && $password != false){
               </li>
               </ul>
           </li>
-          
+
               <li class="item">
             <div class="submenu-item">
               <span>Fun  </span>
@@ -292,313 +273,37 @@ if($email != false && $password != false){
     <nav class="navbar">
       <i class="fa-solid fa-bars" id="sidebar-close"></i>
       <div class="navbar-items">
-      <h6>Welcome <?php echo $fetch_info['fname'] ?></h6>
         <a href="#" class="logo"><img src="images/logo.png" alt="">Oly Maths</a>
         <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
         <a href="#"></a><ion-icon name="logo-facebook"></ion-icon></a>
         <a href="#"></a><ion-icon name="logo-twitter"></ion-icon></a>
         <a href="#"></a><ion-icon name="logo-linkedin"></ion-icon></a>
-        <button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button>
+
       </div>
-      
+
     </nav>
 
     <main class="main">
+
     <section>
-    <div class="container">
-    <div class="quoraBox">
-    <div class="quoraBox__info">
-    <?php
-  if ($fetch_info['profile'] != null) {
-    echo '<img src="' . $fetch_info['profile'] . '" alt="Profile Picture" class="userAvatar">';
-  } else {
-    echo '<img src="60111.jpg" alt="Dummy Picture" class="userAvatar">';
-  }
-  ?>      <h4><?php echo $fetch_info['fname'] ?> <?php echo $fetch_info['lname'] ?></h4>
-    </div>
-    <div class="quoraBox__quora" onclick="openDialog()">
-      <p>What is your question or link?</p>
-    </div>
+
+    <div class="content-container">
+
+  <div class="content">
+  <h1> <i>"Unlocking Olympiad Excellence Through Number Theory" </i></h1>
+
+    <p>Welcome to Oly Maths, the ultimate destination for passionate mathematics enthusiasts, with a laser-focused dedication to the captivating realm of Number Theory. If you're a dedicated student gearing up for Math Olympiads and yearning to unlock the beauty of numbers, you've just landed in the right place.<br>Our mission is to provide you with a community where you can connect, learn, and collaborate with like-minded individuals who share your passion for numbers. <br>So, come along and explore the world of Oly Maths. Let's unravel the secrets of numbers together, one equation at a time. Your Math Olympiad journey starts here.</p>
+    <a href="/WebProject/login-user.php" class="btn">Join now</a>
   </div>
-</div>  
-  <div id="dialog" class="dialog">
-    <div class="dialog__content">
-      <span class="close" onclick="closeDialog()">&times;</span>
-      <h3>Post your question</h3>
-      <div class="userProfile">
-        
-      <?php
-  if ($fetch_info['profile'] != null) {
-    echo '<img src="' . $fetch_info['profile'] . '" alt="Profile Picture" class="userAvatar">';
-  } else {
-    echo '<img src="60111.jpg" alt="Dummy Picture" class="userAvatar">';
-  }
-  ?>
-        <h5><?php echo $fetch_info['fname'] ?> <?php echo $fetch_info['lname'] ?></h5>
-       
-      </div>
-      <form action="submit_question.php" method="POST" enctype="multipart/form-data">
-        <textarea name="question" placeholder="Enter your question or link" required></textarea>
-        <label for="fileInput" class="fileInputContainer">
-          <span>Choose files</span>
-          <input type="file" name="image" id="fileInput" accept="image/*" style="display: none;" onchange="addFiles(event)" />
-        </label>
-        <div id="imagePreview" class="imagePreview"></div>
-
-        <button type="submit" name="post">Post</button>
-      </form>
-    </div>
+  <div class="image-container">
+    <img src="/webproject/images/front.png">
   </div>
-
-</section>
-    
-
-<section>
-
-<div class="feed">
-    <?php
-    // Connect to your database
-    $conn = mysqli_connect('localhost', 'root', '', 'userform');
-
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    // Prepare the statement
-    $stmt = mysqli_prepare($conn, "SELECT * FROM questions");
-
-    // Execute the statement
-    mysqli_stmt_execute($stmt);
-
-    // Get the result
-    $result = mysqli_stmt_get_result($stmt);
-    $index = 0;
-
-    // Loop through the posts and display them
-    while ($row = mysqli_fetch_assoc($result)) {
-        $FirstName = $row['fname'];
-        $lastName = $row['lname'];
-        $postDate = $row['timestamp'];
-        $postContent = $row['question'];
-        $postImage = $row['image'];
-        $profile = $row['profile'];
-        $qid = $row["id"];
-        ?>
-
-        <div class="post">
-            <div class="post-header">
-                <img src="<?php echo $profile; ?>" alt="User Profile Photo" class="user-profile-photo">
-                <div class="post-info">
-                    <p class="user-name"><?php echo $FirstName; ?> <?php echo $lastName; ?> <span class="user-action">posted a question</span></p>
-                    <p class="post-date"><?php echo $postDate; ?></p>
-                </div>
-            </div>
-            <p class="post-content"><?php echo $postContent; ?></p>
-
-            <?php if (!empty($postImage)) { ?>
-                <img src="<?php echo $postImage; ?>" alt="Post Image" class="post-image">
-            <?php } ?>
-
-            <div class="button-bar">
-                <button class="clap-btn">
-                    <i class="fas fa-hand-holding-heart"></i>
-                    <span>Thanks</span>
-                </button>
-                <button class="answer-thread-btn">
-                    <i class="fa-sharp fa-regular fa-pen-to-square"></i>
-                    <span>Answer Thread</span>
-                </button>
-            </div>
-
-            <div class="answer-section" style="display: none;">
-    <div class="user-profile-container">
-        <?php
-        if ($fetch_info['profile'] != null) {
-            echo '<img src="' . $fetch_info['profile'] . '" alt="Profile Picture" class="user-profile-photo">';
-        } else {
-            echo '<img src="60111.jpg" alt="Dummy Picture" class="user-profile-photo">';
-        }
-        ?>
-        <div class="answer-input-container">
-            <form action="submit_answer.php" method="POST" enctype="multipart/form-data">
-                <textarea placeholder="Add an answer" class="answer-input" name="answer"></textarea>
-                <div class="preview-container" style="display: none;">
-                    <img class="preview-image" alt="Image Preview" id="preview-image-<?php echo $qid; ?>">
-                    <button class="cross-button" style="display: none;">&times;</button>
-                </div>
-                <label for="file-upload-<?php echo $qid; ?>" class="file-upload-label">
-                    <img src="123.jpg" alt="Gallery Icon" class="gallery-icon">
-                </label>
-                <input id="file-upload-<?php echo $qid; ?>" type="file" accept="image/*" class="file-upload-input" name="image" onchange="previewImage(event, <?php echo $qid; ?>)">
-                <input type="hidden" name="question_id" value="<?php echo $qid; ?>">
-                <!-- Hidden input to store the question ID -->
-                <button type="submit" class="answer-btn" name="answers">Answer</button>
-            </form>
-        </div>
-    </div>
-  
-   
-  
-    <ul class="answers-list">
-                    <?php
-                    
-                    $answerStmt = mysqli_prepare($conn, "SELECT * FROM answers WHERE aid = ?");
-
-                    mysqli_stmt_bind_param($answerStmt, "i", $qid);
-
-                    // Execute the statement
-                    mysqli_stmt_execute($answerStmt);
-
-                    // Get the result
-                    $answerResult = mysqli_stmt_get_result($answerStmt);
-
-                    // Loop through the answers and display them
-                    while ($answerRow = mysqli_fetch_assoc($answerResult)) {
-                        $answerAuthor = $answerRow['fname'];
-                        $answerAuthorl = $answerRow['lname'];
-                        $answerDate = $answerRow['timestamp'];
-                        $answerContent = $answerRow['answer'];
-                        $answerImage = $answerRow['image'];
-                        ?>
-
-                        <div class="answer-item" id="answeritem">
-                            <div class="user-header">
-                                <img src="<?php echo $profile; ?>" alt="User Profile Photo" class="user-profile-photo" />
-                                <p class="user-name"><?php echo $answerAuthor; ?><?php echo $answerAuthorl; ?></p>
-                                <span> </span>
-                                <p class="answered-date"><?php echo $answerDate; ?></p>
-                            </div>
-                            <div class="answer-content">
-                                <p class="answer-text"><?php echo $answerContent; ?></p>
-                                <?php if (!empty($answerImage)) { ?>
-                                    <img src="<?php echo $answerImage; ?>" alt="Answer Image" class="answer-image" />
-                                <?php } ?>
-                            </div>
-                            <div class="happy-container">
-                                <button class="clap-btn">
-                                    <i class="fa-sharp fa-regular fa-face-smile"></i> Happy
-                                </button>
-                                <span class="happy-count">0</span>
-                            </div>
-                        </div>
-
-                        <?php
-                    }
-
-                    // Close the answer statement
-                    mysqli_stmt_close($answerStmt);
-                    ?>
-                </ul>
-            </div>
-        </div>
-
-        <?php
-        $index++; // Increment the index variable
-    }
-
-    // Close the statement
-    mysqli_stmt_close($stmt);
-
-    // Close the database connection
-    mysqli_close($conn);
-    ?>
 </div>
-<script>
-    function previewImage(event, qid) {
-    var input = event.target;
-    var previewContainer = input.parentNode.querySelector('.preview-container');
-    var previewImage = previewContainer.querySelector('#preview-image-' + qid);
-    var crossButton = previewContainer.querySelector('.cross-button');
 
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            previewImage.src = e.target.result;
-            previewContainer.style.display = 'block';
-            crossButton.style.display = 'block';
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    } else {
-        previewImage.src = '';
-        previewContainer.style.display = 'none';
-        crossButton.style.display = 'none';
-    }
-
-    crossButton.addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent form submission
-
-        // Code to remove the preview image or perform any other desired action
-        previewImage.src = '';
-        previewContainer.style.display = 'none';
-        crossButton.style.display = 'none';
-    });
-}
-
-</script>
-
-<script>
-   // JavaScript code to handle file upload and image preview
-
-// Get all file input elements
-const fileInputs = document.querySelectorAll('.file-upload-input');
-
-// Loop through each file input element
-fileInputs.forEach(function(fileInput) {
-    const previewContainer = fileInput.parentNode.nextElementSibling;
-    const previewImage = previewContainer.querySelector('.preview-image');
-    const crossButton = previewContainer.querySelector('.cross-button');
-
-    // Handle file input change event
-    fileInput.addEventListener('change', function(event) {
-        const file = event.target.files[0];
-
-        // Display the image preview
-        if (file && file.type.startsWith('image/')) {
-            const reader = new FileReader();
-
-            reader.onload = function() {
-                previewImage.src = reader.result;
-            };
-
-            reader.readAsDataURL(file);
-            previewContainer.style.display = 'block';
-            crossButton.style.display = 'block';
-        }
-    });
-
-    // Handle cross button click event to remove the preview
-    crossButton.addEventListener('click', function() {
-        previewImage.src = '';
-        fileInput.value = '';
-        previewContainer.style.display = 'none';
-        crossButton.style.display = 'none';
-    });
-});
-
-</script>
-
-
-<script>
-    // JavaScript code to handle the toggle behavior
-    const answerSections = document.querySelectorAll('.answer-section');
-
-    answerSections.forEach((answerSection) => {
-        const answerThreadBtn = answerSection.previousElementSibling.querySelector('.answer-thread-btn');
-
-        answerThreadBtn.addEventListener('click', () => {
-            answerSection.style.display = (answerSection.style.display === 'none') ? 'block' : 'none';
-        });
-    });
-</script>
-<script src="post.js"></script>
 
 
 </section>
 
-    
       <div class="navigation">
         <ul>
           <li class="list">
@@ -611,20 +316,20 @@ fileInputs.forEach(function(fileInput) {
             </a>
           </li>
           <li class="list">
-            <a href="profile.php">
+            <a href="discussion.php">
               <span class="icon">
-                <ion-icon name="person-outline"></ion-icon>
+                <ion-icon name="chatbox-outline"></ion-icon>
               </span>
-              <span class="text">Profile</span>
+              <span class="text">Discussioin</span>
               <span class="circle"></span>
             </a>
           </li>
           <li class="list">
-            <a href="#">
+            <a href="/WebProject/about.php">
               <span class="icon">
-                <ion-icon name="people"></ion-icon>
+                <ion-icon name="person-outline"></ion-icon>
               </span>
-              <span class="text">About Us</span>
+              <span class="text">Profile</span>
               <span class="circle"></span>
             </a>
           </li>
@@ -649,22 +354,22 @@ fileInputs.forEach(function(fileInput) {
           <div class="indicator"></div>
         </ul>
       </div>
-      
+
       <script>
         // Get the current page URL
         var currentPageUrl = window.location.href;
-      
+
         // Get all the navigation list items
         var navigationItems = document.querySelectorAll('.navigation .list');
-      
+
         // Loop through each navigation item
         navigationItems.forEach(function(item) {
           // Get the anchor tag within the list item
           var anchor = item.querySelector('a');
-      
+
           // Get the href value of the anchor tag
           var href = anchor.getAttribute('href');
-      
+
           // Check if the href matches the current page URL
           if (currentPageUrl.includes(href)) {
             // Add the "active" class to the list item
@@ -687,7 +392,7 @@ var signInMenuItem = document.querySelector('.navigation .list:nth-child(1)');
 signInMenuItem.classList.add('active');
 
             </script>
-      
+
       <script src="main.js"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
